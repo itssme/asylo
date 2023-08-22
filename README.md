@@ -1,3 +1,8 @@
+Build:
+```bash
+bazelisk run //asylo/examples/hello_world  --cxxopt=-Wno-error --cxxopt='-std=c++17' -- --names="Test1, Test2"
+```
+
 # Asylo ([asylo.dev](https://asylo.dev)) [![Build status](https://badge.buildkite.com/34525fbee9a2289bba7f3ac74df984c8916e5e1725f45941fa.svg)](https://buildkite.com/asylo/asylo-docker-test-for-master-branch)
 
 Asylo is an open and flexible framework for developing enclave applications.

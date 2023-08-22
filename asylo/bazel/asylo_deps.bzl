@@ -16,6 +16,8 @@
 
 """Repository rule implementations for WORKSPACE to use."""
 
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("//asylo/bazel:installation_path.bzl", "installation_path")
 
@@ -185,14 +187,19 @@ def asylo_deps(toolchain_path = None):
 
     # Boringssl
     if not native.existing_rule("boringssl"):
-        http_archive(
-            name = "boringssl",
+        #http_archive(
+        #    name = "boringssl",
             # Commit from 2021 May 04
-            urls = [
-                "https://github.com/google/boringssl/archive/9c286f671cfb6d8d6288b93a167c2fd6b1a2aaf4.tar.gz",
-            ],
-            sha256 = "e1c5fbfc5ce0b2a65969bfe1273296e917816ff33f06ae0a288b725e0cfca988",
-            strip_prefix = "boringssl-9c286f671cfb6d8d6288b93a167c2fd6b1a2aaf4",
+        #    urls = [
+        #        "https://github.com/google/boringssl/archive/9c286f671cfb6d8d6288b93a167c2fd6b1a2aaf4.tar.gz",
+        #    ],
+        #    sha256 = "e1c5fbfc5ce0b2a65969bfe1273296e917816ff33f06ae0a288b725e0cfca988",
+        #    strip_prefix = "boringssl-9c286f671cfb6d8d6288b93a167c2fd6b1a2aaf4",
+        #)
+        git_repository(
+            name = "boringssl",
+            commit = "5233bea",
+            remote = "https://boringssl.googlesource.com/boringssl",
         )
 
     # RE2 regular-expression framework. Used by some unit-tests.

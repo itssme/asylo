@@ -175,8 +175,8 @@ class SystemCallTable(object):
         self.annotation_list:
       key = '{{"{}", "{}"}}'.format(syscall, param_name)
       if annotation_name == 'bound':
-        bind_param_index = self.parameter_list[syscall].index(
-            annotation_value) / 2
+        bind_param_index = int(self.parameter_list[syscall].index(
+            annotation_value) / 2)
         bounds.append('{{{}, {}}}'.format(key, bind_param_index))
       if annotation_name == 'count':
         counts.append('{{{}, {}}}'.format(key, annotation_value))
